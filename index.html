@@ -1,31 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AUTO GARAGE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #FFD700;
+      --secondary-color: #2c3e50;
+      --accent-color: #4ca1af;
+      --text-color: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.1);
+    }
+    
     body {  
-      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
       min-height: 100vh;
-      color: #ffffff;
+      color: var(--text-color);
       font-family: 'Cairo', sans-serif;
+      padding-top: 80px;
+    }
+
+    .navbar {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     }
 
     .navbar-text-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
       font-weight: bold;
       font-size: 1.9rem;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      color: #110f05;
+      color: var(--primary-color);
+      text-shadow: 2px 2px 5px #000;
       user-select: none;
-      background-color: rgba(255, 255, 255, 0.1);
-      display: flex;
     }
 
     .logo-img {
@@ -37,76 +51,71 @@
     }
 
     .logo-img:hover {
-      transform: scale(2.1);
+      transform: scale(1.2);
     }
 
     .car-card {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--card-bg);
       border-radius: 15px;
-      padding: 15px;
+      padding: 20px;
       margin-bottom: 30px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      color: white;
+      color:  #FFD700;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      transition: transform 0.3s ease;
     }
+    
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+    
     .car-card img {
-  width: 100%;
-  height: 450px; 
-  object-fit: cover; 
-  border-radius: 10px; 
-  
-}
-
-
-    .car-card h2 {
-      color: #0e0d07;
-      font-size: 42px;
-
-
+      width: 100%;
+      height: 450px; 
+      object-fit: cover; 
+      border-radius: 10px;
+      transition: opacity 0.3s ease;
+    }
+    
+    .car-card img.loading {
+      opacity: 0.7;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
     }
 
-    .zoom-btn {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background-color: #fff;
-      color: #000;
-      border-radius: 50px;
-      padding: 5px 10px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      z-index: 10;
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
 
-    .zoom-btn:hover {
-      background-color: #eee;
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(100%) sepia(100%) saturate(500%) hue-rotate(200deg) rgba(248, 115, 115, 0.5);
     }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(100%) sepia(100%) saturate(500%) hue-rotate(200deg) rgba(248, 115, 115, 0.5);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(37, 211, 102, 0.8), 0 0 20px rgba(37, 211, 102, 0.5);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(37, 211, 102, 1), 0 0 40px rgba(37, 211, 102, 0.8);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(37, 211, 102, 0.8), 0 0 20px rgba(37, 211, 102, 0.5);
-  }
-}
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(37, 211, 102, 0.8), 0 0 20px rgba(37, 211, 102, 0.5);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(37, 211, 102, 1), 0 0 40px rgba(37, 211, 102, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(37, 211, 102, 0.8), 0 0 20px rgba(37, 211, 102, 0.5);
+      }
+    }
+    
     .modal-content {
       position: relative;
       background-color: #000;
+      border-radius: 15px;
+      overflow: hidden;
     }
 
     .close-btn {
@@ -122,6 +131,7 @@
       color: white;
       cursor: pointer;
       z-index: 10;
+      transition: background-color 0.3s ease;
     }
 
     .close-btn:hover {
@@ -132,747 +142,897 @@
       overflow: hidden;
       transition: max-height 0.5s ease;
       max-height: 0;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0 15px;
+      border-radius: 10px;
     }
 
     .extra-details.expanded {
-      max-height: 500px;
-      transition: max-height 0.5s ease;
+      max-height: 1000px;
+      padding: 15px;
     }
     
-  footer a:hover {
-    color: #FFD700; 
-    text-decoration: none;
-  }
-  footer h2 {
-  
-    color: #FFD700;
-  }
+    .extra-details ul {
+      padding-right: 20px;
+    }
+    
+    .extra-details li {
+      margin-bottom: 8px;
+    }
+    
+    footer {
+      background: linear-gradient(to top, #1a1a1a, #2d2d2d) !important;
+    }
+    
+    footer a:hover {
+      color: var(--primary-color) !important;
+      text-decoration: none;
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+    
+    footer h2 {
+      color: var(--primary-color);
+      text-shadow: 1px 1px 3px #000;
+    }
+    
+    .btn-whatsapp {
+      background-color: #25D366;
+      border-color: #25D366;
+      animation: pulse 2s infinite;
+    }
+    
+    .btn-whatsapp:hover {
+      background-color: #128C7E;
+      border-color: #128C7E;
+      animation: none;
+    }
+    
+    .btn-details {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-details:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .btn-details:focus:after {
+      animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 99;
+    }
+    
+    @media (max-width: 768px) {
+      .car-card img {
+        height: 300px;
+      }
+      
+      .car-card h2 {
+        font-size: 32px;
+      }
+      
+      .navbar-text-center {
+        font-size: 1.5rem;
+      }
+    }
 
-  .car-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-block-start: 15%;
-  margin: 15%;
-}
-
-
-
-
+    /* تحسينات للأداء */
+    .carousel-item:not(.active) {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="LOGO.png" alt="Logo Right" class="logo-img" /></a>
+      <span class="navbar-text-center mx-auto">AUTO GARAGE</span>
+      <a class="navbar-brand" href="#"><img src="LOGO.png" alt="Logo Left" class="logo-img" /></a>
+    </div>
+  </nav>
 
-  <nav class="navbar navbar-expand-lg" 
-  style="background-color: rgba(255, 255, 255, 0.1);">
-  <div class="container">
-    <a class="navbar-brand" href="#"><img src="LOGO .png" alt="Logo Right" class="logo-img" /></a>
-
-  
-
-    <span class="navbar-text fw-bold" style="color:#FFD700; font-size: 1.8rem; text-shadow:2px 2px 5px #000;"> AUTO GARAGE </span>
-
-
-    <a class="navbar-brand" href="#"><img src="LOGO .png" alt="Logo Left" class="logo-img" /></a>
+  <div class="floating-contact">
+    <a href="tel:+212600292494" class="btn btn-primary rounded-circle p-3 shadow">
+      <i class="fas fa-phone"></i>
+    </a>
   </div>
-</nav>
 
-
-
-<div class="container my-5">
-  <h1 class="text-center mb-5 text-warning" style=" text-shadow:5px 4px 2px #000"> معرض سيارات للبيع  </h1>
-  <div id="carsContainer"></div>
-</div>
-
-
-<div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-dark position-relative">
-      <button class="close-btn" onclick="closeZoom()">❌</button>
-      <div id="zoomCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="zoomCarouselInner"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#zoomCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#zoomCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
+  <div class="container my-5">
+    <h1 class="text-center mb-5 text-warning" style="text-shadow: 5px 4px 2px #000">معرض سيارات للبيع</h1>
+    <div id="carsContainer" class="row"></div>
+    
+    <div class="text-center mt-5">
+      <button id="loadMoreBtn" class="btn btn-outline-warning btn-lg">عرض المزيد من السيارات</button>
     </div>
   </div>
-</div>
 
-<footer class="bg-dark text-light pt-5 pb-3">
-  <div class="container">
-    <div class="row mb-4">
-      <div class="col text-center">
-        <h2 class="fw-bold" style="color: #FFD700;">AUTO GARAGE</h2>
-      </div>
-    </div>
-
-    <div class="row mb-4 justify-content-center">
-      <div class="col-md-2 col-6 text-center mb-2">
-        <a href="https://www.facebook.com/profile.php?id=61579319646958" class="text-light fs-5"><i class="fab fa-facebook-f me-1"></i> Facebook</a>
-      </div>
-      <div class="col-md-2 col-6 text-center mb-2">
-        <a href="https://maps.app.goo.gl/Bgq5CN3DztvbcJrf7" target="_blank" class="text-light fs-5">
-          <i class="fas fa-map-marker-alt me-1"></i> موقعنا
-        </a>
-      </div>
-      
-      <div class="col-md-2 col-6 text-center mb-2">
-        <a href="tel:+212600292494" class="text-light fs-5"><i class="fas fa-phone me-1"></i> Call</a>
-      </div>
-      <div class="col-md-2 col-6 text-center mb-2">
-        <a href="https://wa.me/212600292494" target="_blank" class="text-light fs-5"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
-      </div>
-    </div>
-    <div style="text-align: center; padding: 5%;"> 
-      <h2> Merci pour votre visite</h2>
-    </div>
-
- 
-    <div class="row">
-      <div class="col text-center">
-        <p class="mb-0">&copy; 2025 AUTO GARAGE. جميع الحقوق محفوظة.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-
-  const cars = [
-    {
-      name: "peugeot 208",
-      specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
-      images: ["208_1.png", "208_2.png", "208_3.png","208_4.png "],
-      specs: [
-        "Année: 2021 ",
-        "Boit vitasse : manualle",
-        "kilométrage: 133 000 km ",
-       "1er Maine "
-      ],
-      extraDetails: `
-      <h2>Option</h2>
-       <ul style="color: #000000;" >
-
-  <li>Climatisation automatique</li>
-  <li>Puissance fiscale : 6 cv </li>
-  <li>Système de navigation GPS</li>
-  <li>Caméra de recul</li>
-  <li>Feux arrière LED rouges</li>
-  <li>Capteurs de stationnement avant et arrière</li>
-  <li>Régulateur de vitesse</li>
-  <li>Jamais accidentée</li>
-      </ul>
-
-    `
-  },
-    {
-      name: "JEEP",
-      specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
-      images: ["jeep1.png", "jeep2.png", "jeep3.png", "jeep4.png","jeep5.png"],
-      specs: [
-        "Jeep Copasse",
-      "Année: 2021 ",
-        "Boit vitasse : manualle",
-        "kilométrage: 76 000 km ",
-        "1er Maine"
-        
-      ],
-      extraDetails: ` 
-
-      <h2>Option</h2>
-
-        <ul style="color: #000000;" >
-  <li>  Climatisation automatique                  </li>
-  <li>  Puissance fiscale : 7 cv                   </li>
-  <li>  Nombre de rapports : 6                     </li>
-  <li>  Puissance réelle : 115 ch                  </li>
-  <li>  Caméra de recul                            </li>
-  <li>  Feux arrière  LED rouges                   </li>
-  <li>  Capteurs de stationnement avant et arrière </li>
-  <li>  Écran tactile multifonction                </li>
-  <li>  Régulateur de vitesse                      </li>
-  <li>  Nombre de portes : 5                       </li>
-  <li>  Jamais accidentée                          </li>
-      </ul>
-
-    `
-    },
-    {
-      name: "HYUNDAI I30",
-      specialOffer: "سيارة مستعملة في حالة ممتازة ",
-      images: ["i30_1.png", "i30_2.png", "i30_3.png","i30_4.png","i30.jpg"],
-      specs: [
-     
-      "Année: 2019 ",
-        "Boit vitasse : manualle",
-        "kilométrage: 99 000 km ",
-        "1er Maine ",
-        "Carburant : Diesel "
-
-      ],
-      extraDetails: ` 
-
-      <h2>Option</h2>
-
-        <ul style="color:  #000000;" >
-
-  <li>  Climatisation automatique                  </li>
-  <li>  Puissance fiscale : 6 cv                   </li>
-  <li>  Nombre de rapports : 6                     </li>
-  <li>  Puissance réelle : 136 ch                  </li>
-  <li>  Coffre (litre) : 395 l                     </li>
-  <li>  Feux arrière  LED rouges                   </li>
-  <li>  Écran tactile multifonction                </li>
-  <li>  DVD/SD/USB                                 </li>
-  <li>  Régulateur de vitesse                      </li>
-  <li>  Nombre de portes : 5                       </li>
-  
-  
-      </ul>
-      `
-    },
-    {
-      name: "SKODA KAROQ",
-      specialOffer: "خصم خاص 12% لفترة محدودة",
-      images: ["karoq1.png", "karoq2.png", "karoq3.png","karoq4.png","karoq5.png"],
-
-            specs: [
-       "Année: 2024 ",
-        "Boit vitasse : Automatique ",
-        "kilométrage: 168 000 km ",
-        "Rétroviseur électrique rabattable",
-        "1ère main"
-
-      ],
-      extraDetails:  `
-      <h2>Option</h2>
-
-        <ul style="color:  #000000;" >
-  <li>  Climatisation automatique                  </li>
-  <li>  Puissance fiscale : 8 cv                   </li>
-  <li>  Boit vitasse Automatique                   </li>
-  <li>  Puissance réelle : 125 ch                  </li>
-  <li>  Régulateur et limiteur de vitesse          </li>
-  <li>  Feux arrière  LED rouges                   </li>
-  <li>  Écran tactile multifonction                </li>
-  <li>  Régulateur de vitesse                      </li>
-  <li>  Nombre de portes : 5                       </li>
-  <li>  Rétroviseurs extérieurs rabattables        </li>
-  <li>  Démarrage sans clé (bouton Start/Stop)     </li>
-  
-  
-      </ul>
-      `
-    },
-    {
-      name: " HYUNDAI Creta",
-      specialOffer: "سيارة في حالة ممتازة ",
-      images: ["creta2020_2.png", "creta2020_3.png", "creta2020_4.png","creta2020_5.png"],
-    
-      specs: [
-      "Année: 2022 ",
-        "Boit vitasse : Automatique ",
-        "kilométrage: 67 000 km ",
-        "1ère main"
-      ],
-
-      extraDetails: `
-      <h2>Option</h2>
-
-        <ul style="color:  #000000;" >
-  <li>  Climatisation automatique                  </li>   
-  <li>  Puissance fiscale : 6 cv                   </li>
-  <li>  Automatique                                </li>
-  <li>  Puissance réelle : 125 ch                  </li>
-  <li>  Régulateur et limiteur de vitesse          </li>
-  <li>  Feux arrière  LED rouges                   </li>
-  <li>  Écran tactile multifonction                </li>
-  <li>  Régulateur de vitesse                      </li>
-  <li>  Jantes aluminium                           </li>
-  <li>  Rétroviseurs rabattables                   </li>
-  
-      </ul>
-      `
-    },
-    
-    {
-      name: "RENAULT EXPRISS",
-      specialOffer: "خصم خاص بمناسبة الموسم",
-      images: ["Renault_Expriss 1.png", "Renault_Expriss 2.png", "Renault_Expriss 3.png","Renault_Expriss 3.png","Renault Expriss 2023 5.jpg"],
-      specs: [
-      "Année: 2023 ",
-        "Boit vitasse :  Manualle ",
-        "kilométrage: 33 000 km ",
-        "dauble couliss",
-        "1ère main"
-      ],
-      extraDetails: `
-      <h2>Option</h2>
-      
-<ul style="color:  #000000;" >
-
-<li>  Climatisation automatique                  </li>   
-<li>  Puissance fiscale : 6 cv                   </li>
-<li>  Boit vitasse: Manualle                     </li>
-<li>  Régulateur et limiteur de vitesse          </li>
-<li>  Feux arrière  LED rouges                   </li>
-<li>  Écran tactile multifonction                </li>
-<li>  Régulateur de vitesse                      </li>
-<li>  Boîte à vitesse : 5 rapports               </li>
-<li>  Puissance dynamique95 ch                   </li>
-<li>  Volume de coffre800 litre                  </li>
-<li>  Caméra de recul                            </li>
-<li>  Jantes aluminium                           </li> 
-
-</ul>
-`
-    },
-    {
-      name: "BMW 116d",
-      specialOffer: "خصومات الصيف 18%",
-      images: ["bmw1.png","bmw2.png","bmw3.png","bmw4.png "],
-      specs: [
-        "BMW Série 1",
-      "Année: 2019 ",
-        "Boit vitasse :  Automatique",
-        "kilométrage: 38 000 km ",
-        "Toutes options ",
-        "1ère main"
-      ],
-      extraDetails: `
-      <h2>Option</h2>
-      
-<ul style="color:  #000000;" >
-
-<li>  Climatisation automatique                  </li>   
-<li>  Puissance fiscale : 6 cv                   </li>
-<li>  Boit vitasse: Automatique                  </li>
-<li>  Régulateur et limiteur de vitesse          </li>
-<li>  Feux arrière  LED rouges                   </li>
-<li>  Écran tactile multifonction                </li>
-<li>  Régulateur de vitesse                      </li>
-<li>  Jantes en aluminium                        </li> 
-<li>  Caméra de recul                            </li>
-
-</ul>
-`
-    },
-    {
-      name: "DACIA  Sandero",
-      specialOffer: "عرض خاص 10%",
-      images: ["sandiro2020.png","sandiro2021.png","sandiro2024.png","sandiro2023.png"],
-      specs: [
-      "DACIA  Sandero steepway",
-      "Année: 2020",
-        "Boit vitasse :  Manualle ",
-        "kilométrage: 59 000 km ",
-        "1ère main",
-        "Carburant : Diesel",
-        "Toutes options "
-      ],
-      extraDetails:  `
-      <h2>Option</h2>
-      
-<ul style="color:  #000000;" >
-
-<li>  Climatisation automatique                  </li>   
-<li>  Puissance fiscale : 6 cv                   </li>
-<li>  Boit vitasse: Manualle                     </li>
-<li>  Régulateur et limiteur de vitesse          </li>
-<li>  Feux arrière  LED rouges                   </li>
-<li>  Écran tactile multifonction                </li>
-<li>  Jantes en aluminium                        </li>
-<li>  Nombre de portes : 5                       </li>
-<li>  Peinture d'origine                         </li>
-</ul>
-`
-    },
-    {
-      name: "TOYOTA YARIS",
-      specialOffer: "خصم 15% لفترة محدودة",
-      images: ["yariss1.png", "yaris2.png", "yaris3.png","yaris4.png","yaris5.jpg"],
-      specs: [
-      "Année: 2019",
-        "Boit vitasse :  Manualle ",
-        "kilométrage: 40 000 km ",
-        "Toutes options ",
-        "1ère main",
-        "Diesele"
-      ],
-      extraDetails:   `
-      <h2>Option</h2>
-      
-<ul style="color:  #000000;" >
-
-<li>  Climatisation automatique                   </li>   
-<li>  Puissance fiscale : 6 cv                    </li>
-<li>  Boit vitasse: Manualle                      </li>
-<li>  Régulateur et limiteur de vitesse           </li>
-<li>  Feux arrière  LED rouges                    </li>
-<li>  Écran tactile multifonction                 </li>
-<li>  Régulateur de vitesse                       </li>
-<li>  Rétroviseurs rabattables                    </li>
-<li>  Peinture d'origine                          </li>
-</ul>
-`
-    },
-    {
-      name: "PEUGEOT Partner",
-      specialOffer: "خصم خاص 12%",
-      images: ["partnir2.png", "partnir3.png", "partnir4.png", "partnir5.png", ],
-      specs: [
-       "Année : 2009 ",  
-       "diwana : 2014",               
-       "1ère main   ",                 
-       "Kilométrage : 160 000 km",                
-       "Moteur : Diesel"  
-      ],
-      extraDetails: `
-        <h2>Option</h2>
-      
-        <ul style="color:  #000000;" >
-
-  <li> Année : 2009                             </li>
-  <li> 1ère main                                </li>
-  <li> Kilométrage : 160 000 km                 </li>
-  <li> Moteur : Diesel                          </li>
-  <li> Boîte de vitesses : Manuelle             </li>
-  <li> Double portes coulissantes               </li>
-  <li> Climatisation                            </li>
-  <li> Peinture d'origine                       </li>
-</ul>
-  `
-
-    },
-    {
-      name: "SUZUKI Celerio",
-      specialOffer: "عرض خاص 10%",
-      images: ["suzuki1.png", "suzuki2.png", "suzuki4.png", "suzuki5.png" , "suzuki5.jpg"],
-      specs: [
-      "Année : 2018 ",                 
-       "1ère main   ",                 
-       "Kilométrage : 89 000 km",                
-       "Moteur : Essance"  
-      ],
-      extraDetails:  `
-      <h2>Option</h2>
-       
-      <ul style="color:  #000000;" >
-
-      <li>Verrouillage centralisé à distance         </li>
-      <li>Première main                              </li> 
-      <li>Boite de vitesses Manuelle                 </li>
-      <li>Puissance fiscale : 5 cv                   </li>
-      <li>Vitres électriques                         </li>
-  
-
-
-      `
-    },
-    {
-      name: "PASSAT CC",
-      specialOffer: "خصم 12% لفترة ",
-      images: ["passat1.png", "passat2.png", "passat cc 2015  3.jpg","passat3.png","passat3.png"],
-      specs: [
-      "Année : 2015 ",                 
-       "Boit vitasse Automatique ",                 
-       "Kilométrage : 300 000 km",                
-       "Moteur : Diesel"  
-      ],
-      extraDetails:   `
-      <h2>Option</h2>
-      <ul style="color:  #000000;" >
-
-  <li>Marque :            Volkswagen Passat CC ,</li>
-  <li>Année  :            2015                  </li>
-  <li>Kilométrage :       300 000 km            </li>
-  <li>Moteur :            Diesel                </li>
-  <li>Boîte de vitesses : Automatique           </li>
-  <li>Toit ouvrant panoramique                  </li>
-  <li>Climatisation automatique                 </li>
-  <li>Intérieur cuir                            </li>
-  <li>Système de navigation GPS                 </li>
-  <li>Caméra de recul                           </li>
-  <li>Régulateur et limiteur de vitesse         </li>
-  <li>Feux LED                                  </li>
-  <li>Peinture d'origine                        </li>
-  <li>Radars de stationnement avant et arrière  </li>
-</ul>
-
-      `
-    },
-    {
-      name: "Mercedis A205e",
-      specialOffer: "Mercedes A 205e Hybride en parfait état, très faible kilométrage, équipée de toutes les options haut de gamme pour un confort et une sécurité maximale. Une occasion unique à ne pas manquer",
-      images: ["m1.png", "m2.png", "m3.png","m4.jpg"],
-      specs: [
-      "Année : 2020 ",                 
-       "Boit vitasse Automatique ",                 
-       "Kilométrage : 84 000 km",                
-       "Moteur : hybrid et Essance "  
-      
-      ],
-      extraDetails: `
-      <h2>Option</h2>
-      <ul style="color:  #000000;" >
-
-    <li>Année premiere mise en circulation :  2020  </li>
-    <li>Premier usage au Maroc en :           2023  </li>
-    <li> 1ère main                                  </li>
-    <li>Kilométrage :  84 000 km                    </li>
-    <li>Motorisation : Hybride rechargeable         </li>
-    <li>Boîte :        Automatique                  </li>
-    <li>Couleur :      Noir métallisé               </li>
-    <li>Toit ouvrant panoramique                    </li>
-    <li>Intérieur cuir haut de gamme                </li>
-    <li>Écran tactile multifonction                 </li>
-    <li>Système de navigation GPS                   </li>
-    <li>Caméra 360° et radars avant/arrière         </li>
-    <li>Climatisation automatique bi-zone           </li>
-    <li>Jantes en alliage aluminium                 </li>
-    <li>Système audio premium                       </li>
-    <li>Toutes options                              </li>
-    <li>Jamais accidentée                           </li>
-  </ul>
-  `
-    },
-    {
-      name: "DACIA SANDIRO STEEPWAY",
-      specialOffer: " Nouveu Dacia sandero steepway", 
-      images: ["dacia_sandiro1.png", "dacia sandiro2.png", "dacia_sandiro3.png", "dacia sandiro4.png", "dacia_sandiro5.png", "dacia_sandiro6.png"],
-      specs: [
-       
-      "Année : 2025 ",                 
-       "Boit vitasse Manuille ",                 
-       "Kilométrage : 7 000 km",                
-       "Moteur : Diesel" 
-      ],
-      extraDetails: `
-      <h2>Option</h2>
-      <ul style="color:  #000000;" >
-
-    <li>Boîte vitasse: Manuelle           </li>
-    <li>Climatisation                     </li>
-    <li>Vitres électriques                </li>
-    <li>Rádio / CD                        </li>
-    <li>Entrée AUX                        </li>
-    <li>Fermeture centralisée             </li>
-    <li>Rétroviseurs électriques          </li>
-    <li>Consommation réduite              </li>
-    <li>Confort et maniabilité            </li>
-    <li>Ecran tactile                     </li>
-    <li>Navigation GPS                    </li>
-    <li>Nombre de places : 5              </li>
-    <li>Démarrage en Start & Stop         </li>
-    <li>Jantes aluminium                  </li>
-  
-
-  </ul>
-  `
-    },
-    {
-      name: "HANDAI CRETA",
-      specialOffer: "hyundai creta manuel 6 cheveux diesel mode",
-      images: ["cretag1.png", "cretag2.png", "critag3.png","crita4.jpg","critag4.png"],
-      specs: [
-
-      "Année : 2021 ",                 
-       "Boit vitasse Manuille ",                 
-       "Kilométrage : 64 000 km",                
-       "Moteur : Diesel"  
-      ],
-      extraDetails:`
-      <h2>Option</h2>
-      <ul style="color:  #000000;" >
-
-    <li>Motorisation : 1.4 Diesil         </li>
-    <li>Boîte :           Manuelle        </li>
-    <li>Climatisation                     </li>
-    <li>Vitres électriques                </li>
-    <li>Rádio / CD                        </li>
-    <li>Entrée AUX                        </li>
-    <li>Limiteur de vitesse               </li>
-    <li>Rétroviseurs électriques          </li>
-    <li>Consommation réduite              </li>
-    <li>ESP/ABS/Airbags                   </li>
-    <LI>Puissance fiscale 6 CV            </li>
-    <li>Jantes aluminium                  </li>
-  </ul>
-  `
-    
-    },
-   
-  ];
-
-
-  function createCarCards() {
-    const container = document.getElementById('carsContainer');
-    container.innerHTML = '';
-
-    cars.forEach((car, index) => {
-      const card = document.createElement('div');
-      card.classList.add('car-card', 'position-relative');
-
-      card.innerHTML = `
-        <h2>${car.name}</h2>
-        <p><strong>${car.specialOffer}</strong></p>
-        <div id="carousel${index}" class="carousel slide mb-3" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            ${car.images.map((img, i) => `
-              <div class="carousel-item${i === 0 ? ' active' : ''}">
-                <img src="${img}" class="d-block w-100 rounded" alt="${car.name} صورة ${i + 1}" style="cursor:pointer;" onclick="openZoom(${index})" />
-              </div>`).join('')}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carousel${index}" data-bs-slide="prev">
+  <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark position-relative">
+        <button class="close-btn" onclick="closeZoom()">❌</button>
+        <div id="zoomCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner" id="zoomCarouselInner"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#zoomCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carousel${index}" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#zoomCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <ul>
-          ${car.specs.map(spec => `<li>${spec}</li>`).join('')}
+  <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h2 class="fw-bold">AUTO GARAGE</h2>
+        </div>
+      </div>
+
+      <div class="row mb-4 justify-content-center">
+        <div class="col-md-2 col-6 text-center mb-2">
+          <a href="https://www.facebook.com/profile.php?id=61579319646958" class="text-light fs-5"><i class="fab fa-facebook-f me-1"></i> Facebook</a>
+        </div>
+        <div class="col-md-2 col-6 text-center mb-2">
+          <a href="https://maps.app.goo.gl/Bgq5CN3DztvbcJrf7" target="_blank" class="text-light fs-5">
+            <i class="fas fa-map-marker-alt me-1"></i> موقعنا
+          </a>
+        </div>
+        <div class="col-md-2 col-6 text-center mb-2">
+          <a href="tel:+212600292494" class="text-light fs-5"><i class="fas fa-phone me-1"></i> اتصل بنا</a>
+        </div>
+        <div class="col-md-2 col-6 text-center mb-2">
+          <a href="https://wa.me/212600292494" target="_blank" class="text-light fs-5"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
+        </div>
+      </div>
+      
+      <div style="text-align: center; padding: 5%;"> 
+        <h2>Merci pour votre visite</h2>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <p class="mb-0">&copy; 2025 AUTO GARAGE. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // بيانات السيارات
+    const cars = [
+      {
+        name: "peugeot 208",
+        specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
+        images: ["208_1.png", "208_2.png", "208_3.png","208_4.png "],
+        specs: [
+          "Année: 2021 ",
+          "Boit vitasse : manualle",
+          "kilométrage: 133 000 km ",
+         "1er Maine "
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+          <li>Climatisation automatique</li>
+          <li>Puissance fiscale : 6 cv </li>
+          <li>Système de navigation GPS</li>
+          <li>Caméra de recul</li>
+          <li>Feux arrière LED rouges</li>
+          <li>Capteurs de stationnement avant et arrière</li>
+          <li>Régulateur de vitesse</li>
+          <li>Jamais accidentée</li>
+        </ul>
+        `
+      },
+
+      {
+        name: "HYUNDAI Accent",
+        specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
+        images: ["HYUNDAI_Accent_1.png", "HYUNDAI_Accent_2.png", "HYUNDAI_Accent_3.png","HYUNDAI_Accent_6.png","HYUNDAI_Accent_4.png","HYUNDAI_Accent_5.png"],
+        specs: [
+          "Année: 2021 ",
+          "Boit vitasse : Automatique ",
+          "kilométrage: 35 000 km ",
+         "1er Maine "
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+          <li>Climatisation automatique</li>
+          <li>Puissance fiscale : 6 cv </li>
+          <li>Système de navigation GPS</li>
+          <li>Caméra de recul</li>
+          <li>Feux arrière LED rouges</li>
+          <li>Capteurs de stationnement avant et arrière</li>
+          <li>Régulateur de vitesse</li>
+        </ul>
+        `
+      },
+     
+
+
+      {
+        name: "JEEP",
+        specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
+        images: ["jeep1.png", "jeep2.png", "jeep3.png", "jeep4.png","jeep5.png"],
+        specs: [
+          "Jeep Copasse",
+        "Année: 2021 ",
+          "Boit vitasse : manualle",
+          "kilométrage: 76 000 km ",
+          "1er Maine"
+          
+        ],
+        extraDetails: ` 
+
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 7 cv                   </li>
+    <li>  Nombre de rapports : 6                     </li>
+    <li>  Puissance réelle : 115 ch                  </li>
+    <li>  Caméra de recul                            </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Capteurs de stationnement avant et arrière </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    <li>  Jamais accidentée                          </li>
         </ul>
 
-        <button class="btn btn-warning mt-2" onclick="toggleExtraDetails(${index})" id="btnDetails${index}">عرض المزيد</button>
- 
-        <div class="extra-details mt-2" id="extraDetails${index}">
-  ${car.extraDetails}
-</div>
+      `
+      },
+      {
+        name: "HYUNDAI I30",
+        specialOffer: "سيارة مستعملة في حالة ممتازة ",
+        images: ["i30_1.png", "i30_2.png", "i30_3.png","i30_4.png","i30.jpg"],
+        specs: [
+       
+        "Année: 2019 ",
+          "Boit vitasse : manualle",
+          "kilométrage: 99 000 km ",
+          "1er Maine ",
+          "Carburant : Diesel "
+
+        ],
+        extraDetails: ` 
+
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 6 cv                   </li>
+    <li>  Nombre de rapports : 6                     </li>
+    <li>  Puissance réelle : 136 ch                  </li>
+    <li>  Coffre (litre) : 395 l                     </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  DVD/SD/USB                                 </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    
+    
+        </ul>
+        `
+      },
+      {
+        name: "SKODA KAROQ",
+        specialOffer: "خصم خاص 12% لفترة محدودة",
+        images: ["karoq1.png", "karoq2.png", "karoq3.png","karoq4.png","karoq5.png"],
+
+              specs: [
+         "Année: 2024 ",
+          "Boit vitasse : Automatique ",
+          "kilométrage: 168 000 km ",
+          "Rétroviseur électrique rabattable",
+          "1ère main"
+
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 8 cv                   </li>
+    <li>  Boit vitasse Automatique                   </li>
+    <li>  Puissance réelle : 125 ch                  </li>
+    <li>  Régulateur et limiteur de vitesse          </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    <li>  Rétroviseurs extérieurs rabattables        </li>
+    <li>  Démarrage sans clé (bouton Start/Stop)     </li>
+    
+    
+        </ul>
+        `
+      },
+      {
+        name: " HYUNDAI Creta",
+        specialOffer: "سيارة في حالة ممتازة ",
+        images: ["creta2020_2.png", "creta2020_3.png", "creta2020_4.png","creta2020_5.png"],
+      
+        specs: [
+        "Année: 2022 ",
+          "Boit vitasse : Automatique ",
+          "kilométrage: 67 000 km ",
+          "1ère main"
+        ],
+
+        extraDetails: `
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+    <li>  Climatisation automatique                  </li>   
+    <li>  Puissance fiscale : 6 cv                   </li>
+    <li>  Automatique                                </li>
+    <li>  Puissance réelle : 125 ch                  </li>
+    <li>  Régulateur et limiteur de vitesse          </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Jantes aluminium                           </li>
+    <li>  Rétroviseurs rabattables                   </li>
+    
+        </ul>
+        `
+      },
+      
+      {
+        name: "RENAULT EXPRISS",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["Renault_Expriss 1.png", "Renault_Expriss 2.png", "Renault_Expriss 3.png","Renault_Expriss 3.png","Renault Expriss 2023 5.jpg"],
+        specs: [
+        "Année: 2023 ",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 33 000 km ",
+          "dauble couliss",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
 
 
 
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Manualle                     </li>
+  <li>  Régulateur et limiteur de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Régulateur de vitesse                      </li>
+  <li>  Boîte à vitesse : 5 rapports               </li>
+  <li>  Puissance dynamique95 ch                   </li>
+  <li>  Volume de coffre800 litre                  </li>
+  <li>  Caméra de recul                            </li>
+  <li>  Jantes aluminium                           </li> 
 
-        <div class="extra-details mt-2" id="extraDetails${index}">
-          <p>${car.extraDetails}</p>
-        </div>
-      `;
-
-      container.appendChild(card);
-    });
-  }
-
-
-function toggleExtraDetails(index) {
-  const details = document.getElementById(`extraDetails${index}`);
-  const btn = document.getElementById(`btnDetails${index}`);
-  
-  if (details.classList.contains('expanded')) {
-    details.classList.remove('expanded');
-    btn.textContent = 'عرض المزيد';
-    btn.classList.remove('active');
-  } else {
-    details.classList.add('expanded');
-    btn.textContent = 'إخفاء التفاصيل';
-    btn.classList.add('active');  
-  }
-}
-
-  function openZoom(carIndex) {
-    const zoomModal = new bootstrap.Modal(document.getElementById('zoomModal'));
-    const zoomCarouselInner = document.getElementById('zoomCarouselInner');
-
-    zoomCarouselInner.innerHTML = cars[carIndex].images.map((img, i) => `
-      <div class="carousel-item${i === 0 ? ' active' : ''}">
-        <img src="${img}" class="d-block w-100 rounded" alt="${cars[carIndex].name} صورة ${i + 1}" />
-      </div>
-    `).join('');
-
-    zoomModal.show();
-  }
-
-  function closeZoom() {
-    const zoomModalEl = document.getElementById('zoomModal');
-    const modal = bootstrap.Modal.getInstance(zoomModalEl);
-    if (modal) modal.hide();
-  }
-
-  document.addEventListener('DOMContentLoaded', createCarCards);
-
-const waNumber = '212600292494';
-
-function createCarCards() {
-  const container = document.getElementById('carsContainer');
-  container.innerHTML = '';
-
-  cars.forEach((car, index) => {
-    const card = document.createElement('div');
-    card.classList.add('car-card', 'position-relative');
-
-    const waText = encodeURIComponent('مرحبا، أريد معلومات حول هذه السيارة: ' + car.specs);
-
-    card.innerHTML = `
-      <h2>${car.name}</h2>
-      <p><strong>${car.specialOffer || ''}</strong></p>
-
-      <div id="carousel${index}" class="carousel slide mb-3" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          ${car.images.map((img, i) => `
-            <div class="carousel-item${i === 0 ? ' active' : ''}">
-              <img src="${(img || '').trim()}" class="d-block w-100 rounded" alt="${car.name} صورة ${i + 1}" style="cursor:pointer;" onclick="openZoom(${index})" />
-            </div>
-          `).join('')}
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel${index}" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel${index}" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-
-      <ul>
-        ${ (car.specs || []).map(spec => `<li>${spec}</li>`).join('') }
-      </ul>
-
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-warning" onclick="toggleExtraDetails(${index})" id="btnDetails${index}">عرض المزيد</button>
-
+  </ul>
+  `
+      },
+      {
+        name: "BMW 116d",
+        specialOffer: "خصومات الصيف 18%",
+        images: ["bmw1.png","bmw2.png","bmw3.png","bmw4.png "],
+        specs: [
+          "BMW Série 1",
+        "Année: 2019 ",
+          "Boit vitasse :  Automatique",
+          "kilométrage: 38 000 km ",
+          "Toutes options ",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
         
-        <a class="btn btn-success" 
-           target="_blank" rel="noopener noreferrer"
-           href="https://wa.me/${waNumber}?text=${waText}"
-           aria-label="واتساب عن ${car.name}">
-          <i class="fab fa-whatsapp me-1"></i> واتساب
-        </a>
-      </div>
+        <ul style="color:  #000000;" >
 
-      <div class="extra-details mt-2" id="extraDetails${index}">
-        ${car.extraDetails || ''}
-      </div>
-    `;
+  
 
-    container.appendChild(card);
-  });
-}
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Automatique                  </li>
+  <li>  Régulateur et limiteر de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Régulateur de vitesse                      </li>
+  <li>  Jantes en aluminium                        </li> 
+  <li>  Caméra de recul                            </li>
 
-function toggleExtraDetails(index) {
-  const details = document.getElementById(`extraDetails${index}`);
-  const btn = document.getElementById(`btnDetails${index}`);
-  if (!details || !btn) return;
+  </ul>
+  `
+      },
+      {
+        name: "DACIA  Sandero",
+        specialOffer: "عرض خاص 10%",
+        images: ["sandiro2020.png","sandiro2021.png","sandiro2024.png","sandiro2023.png"],
+        specs: [
+        "DACIA  Sandero steepway",
+        "Année: 2020",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 59 000 km ",
+          "1ère main",
+          "Carburant : Diesel",
+          "Toutes options "
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+        
+        <ul style="color:  #000000;" >
 
-  if (details.classList.contains('expanded')) {
-    details.classList.remove('expanded');
-    btn.textContent = 'عرض المزيد';
-    btn.classList.remove('btn-danger');
-    btn.classList.add('btn-warning');
-  } else {
-    details.classList.add('expanded');
-    btn.textContent = 'إخفاء التفاصيل';
-    btn.classList.remove('btn-warning');
-    btn.classList.add('btn-danger');
-  }
-}
 
-</script>
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Manualle                     </li>
+  <li>  Régulateur et limiteur de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Jantes en aluminium                        </li>
+  <li>  Nombre de portes : 5                       </li>
+  <li>  Peinture d'origine                         </li>
+  </ul>
+  `
+      },
+      {
+        name: "TOYOTA YARIS",
+        specialOffer: "خصم 15% لفترة محدودة",
+        images: ["yariss1.png", "yaris2.png", "yaris3.png","yaris4.png","yaris5.jpg"],
+        specs: [
+        "Année: 2019",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 40 000 km ",
+          "Toutes options ",
+          "1ère main",
+          "Diesele"
+        ],
+        extraDetails:   `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+  <li>  Climatisation automatique                   </li>   
+  <li>  Puissance fiscale : 6 cv                    </li>
+  <li>  Boit vitasse: Manualle                      </li>
+  <li>  Régulateur et limiteur de vitesse           </li>
+  <li>  Feux arrière  LED rouges                    </li>
+  <li>  Écran tactile multifonction                 </li>
+  <li>  Régulateur de vitesse                       </li>
+  <li>  Rétroviseurs rabattables                    </li>
+  <li>  Peinture d'origine                          </li>
+  </ul>
+  `
+      },
+      {
+        name: "PEUGEOT Partner",
+        specialOffer: "خصم خاص 12%",
+        images: ["partnir2.png", "partnir3.png", "partnir4.png", "partnir5.png", ],
+        specs: [
+         "Année : 2009 ",  
+         "diwana : 2014",               
+         "1ère main   ",                 
+         "Kilométrage : 160 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails: `
+          <h2>Option</h2>
+        
+          <ul style="color:  #000000;" >
+
+    <li> Année : 2009                             </li>
+    <li> 1ère main                                </li>
+    <li> Kilométrage : 160 000 km                 </li>
+    <li> Moteur : Diesel                          </li>
+    <li> Boîte de vitesses : Manuelle             </li>
+    <li> Double portes coulissantes               </li>
+    <li> Climatisation                            </li>
+    <li> Peinture d'origine                       </li>
+  </ul>
+    `
+
+      },
+      {
+        name: "SUZUKI Celerio",
+        specialOffer: "عرض خاص 10%",
+        images: ["suzuki1.png", "suzuki2.png", "suzuki4.png", "suzuki5.png" , "suzuki5.jpg"],
+        specs: [
+        "Année : 2018 ",                 
+         "1ère main   ",                 
+         "Kilométrage : 89 000 km",                
+         "Moteur : Essance"  
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+         
+        <ul style="color:  #000000;" >
+
+        <li>Verrouillage centralisé à distance         </li>
+        <li>Première main                              </li> 
+        <li>Boite de vitesses Manuelle                 </li>
+        <li>Puissance fiscale : 5 cv                   </li>
+        <li>Vitres électriques                         </li>
+   
+
+
+        `
+      },
+      {
+        name: "PASSAT CC",
+        specialOffer: "خصم 12% لفترة ",
+        images: ["passat1.png", "passat2.png", "passat_cc_2015_3.jpg","passat3.png","passat3.png"],
+        specs: [
+        "Année : 2015 ",                 
+         "Boit vitasse Automatique ",                 
+         "Kilométrage : 300 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails:   `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+    <li>Marque :            Volkswagen Passat CC ,</li>
+    <li>Année  :            2015                  </li>
+    <li>Kilométrage :       300 000 km            </li>
+    <li>Moteur :            Diesel                </li>
+    <li>Boîte de vitesses : Automatique           </li>
+    <li>Toit ouvrant panoramique                  </li>
+    <li>Climatisation automatique                 </li>
+    <li>Intérieur cuir                            </li>
+    <li>Système de navigation GPS                 </li>
+    <li>Caméra de recul                           </li>
+    <li>Régulateur et limiteur de vitesse         </li>
+    <li>Feux LED                                  </li>
+    <li>Peinture d'origine                        </li>
+    <li>Radars de stationnement avant et arrière  </li>
+  </ul>
+
+        `
+      },
+      {
+        name: "Mercedis A205e",
+        specialOffer: "Mercedes A 205e Hybride en parfait état, très faible kilométrage, équipée de toutes les options haut de gamme pour un confort et une sécurité maximale. Une occasion unique à ne pas manquer",
+        images: ["m1.png", "m2.png", "m3.png","m4.jpg"],
+        specs: [
+        "Année : 2020 ",                 
+         "Boit vitasse Automatique ",                 
+         "Kilométrage : 84 000 km",                
+         "Moteur : hybrid et Essance "  
+        
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Année premiere mise en circulation :  2020  </li>
+      <li>Premier usage au Maroc en :           2023  </li>
+      <li> 1ère main                                  </li>
+      <li>Kilométrage :  84 000 km                    </li>
+      <li>Motorisation : Hybride rechargeable         </li>
+      <li>Boîte :        Automatique                  </li>
+      <li>Couleur :      Noir métallisé               </li>
+      <li>Toit ouvrant panoramique                    </li>
+      <li>Intérieur cuir haut de gamme                </li>
+      <li>Écran tactile multifonction                 </li>
+      <li>Système de navigation GPS                   </li>
+      <li>Caméra 360° et radars avant/arrière         </li>
+      <li>Climatisation automatique bi-zone           </li>
+      <li>Jantes en alliage aluminium                 </li>
+      <li>Système audio premium                       </li>
+      <li>Toutes options                              </li>
+      <li>Jamais accidentée                           </li>
+    </ul>
+    `
+      },
+      {
+        name: "DACIA SANDIRO STEEPWAY",
+        specialOffer: " Nouveu Dacia sandero steepway", 
+        images: ["dacia_sandiro1.png", "dacia sandiro2.png", "dacia_sandiro3.png", "dacia sandiro4.png", "dacia_sandiro5.png", "dacia_sandiro6.png"],
+        specs: [
+         
+        "Année : 2025 ",                 
+         "Boit vitasse Manuille ",                 
+         "Kilométrage : 7 000 km",                
+         "Moteur : Diesel" 
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Boîte vitasse: Manuelle           </li>
+      <li>Climatisation                     </li>
+      <li>Vitres électriques                </li>
+      <li>Rádio / CD                        </li>
+      <li>Entrée AUX                        </li>
+      <li>Fermeture centralisée             </li>
+      <li>Rétroviseurs électriques          </li>
+      <li>Consommation réduite              </li>
+      <li>Confort et maniabilité            </li>
+      <li>Ecran tactile                     </li>
+      <li>Navigation GPS                    </li>
+      <li>Nombre de places : 5              </li>
+      <li>Démarrage en Start & Stop         </li>
+      <li>Jantes aluminium                  </li>
+    
+
+    </ul>
+    `
+      },
+      {
+        name: "HANDAI CRETA",
+        specialOffer: "hyundai creta manuel 6 cheveux diesel mode",
+        images: ["cretag1.png", "cretag2.png", "critag3.png","crita4.jpg","critag4.png"],
+        specs: [
+
+        "Année : 2021 ",                 
+         "Boit vitasse Manuille ",                 
+         "Kilométrage : 64 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails:`
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Motorisation : 1.4 Diesil         </li>
+      <li>Boîte :           Manuelle        </li>
+      <li>Climatisation                     </li>
+      <li>Vitres électriques                </li>
+      <li>Rádio / CD                        </li>
+      <li>Entrée AUX                        </li>
+      <li>Limiteur de vitesse               </li>
+      <li>Rétroviseurs électriques          </li>
+      <li>Consommation réduite              </li>
+      <li>ESP/ABS/Airbags                   </li>
+      <LI>Puissance fiscale 6 CV            </li>
+      <li>Jantes aluminium                  </li>
+    </ul>
+    `
+      
+      },
+     
+    ];
+
+    const waNumber = '212600292494';
+    let visibleCars = 4; 
+    const carsPerLoad = 2; 
+    let imageObserver = null;
+
+    function initImageObserver() {
+      if ('IntersectionObserver' in window) {
+        imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.classList.add('loading');
+              img.onload = () => {
+                img.classList.remove('loading');
+              };
+              observer.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '0px 0px 200px 0px' 
+        });
+      }
+    }
+
+    function preloadImages(images, callback) {
+      let loaded = 0;
+      const total = images.length;
+      
+      if (total === 0) {
+        callback();
+        return;
+      }
+      
+      images.forEach(src => {
+        const img = new Image();
+        img.onload = () => {
+          loaded++;
+          if (loaded === total) callback();
+        };
+        img.onerror = () => {
+          loaded++;
+          if (loaded === total) callback();
+        };
+        img.src = src;
+      });
+    }
+
+    // دالة لإنشاء بطاقات السيارات
+    function createCarCards() {
+      const container = document.getElementById('carsContainer');
+      container.innerHTML = '';
+      
+      const carsToShow = cars.slice(0, visibleCars);
+      
+      carsToShow.forEach((car, index) => {
+        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات  اكثر حول هذه السيارة: ' + car.name);
+        
+        const card = document.createElement('div');
+        card.classList.add('col-12');
+        card.innerHTML = `
+          <div class="car-card position-relative">
+            <h2>${car.name}</h2>
+            <p><strong>${car.specialOffer || ''}</strong></p>
+
+            <div id="carousel${index}" class="carousel slide mb-3" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                ${car.images.map((img, i) => `
+                  <div class="carousel-item${i === 0 ? ' active' : ''}">
+                    <img data-src="${img}" class="d-block w-100 rounded loading" alt="${car.name} صورة ${i + 1}" style="cursor:pointer;" onclick="openZoom(${index})" />
+                  </div>
+                `).join('')}
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel${index}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel${index}" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+
+            <ul>
+              ${(car.specs || []).map(spec => `<li>${spec}</li>`).join('')}
+            </ul>
+
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <button class="btn btn-warning btn-details" onclick="toggleExtraDetails(${index})" id="btnDetails${index}">عرض المزيد</button>
+
+              <a class="btn btn-whatsapp text-white" 
+                 target="_blank" rel="noopener noreferrer"
+                 href="https://wa.me/${waNumber}?text=${waText}"
+                 aria-label="واتساب عن ${car.name}">
+                <i class="fab fa-whatsapp me-1"></i> واتساب
+              </a>
+              
+              <a href="tel:${waNumber}" class="btn btn-primary">
+                <i class="fas fa-phone me-1"></i> اتصل
+              </a>
+            </div>
+
+            <div class="extra-details mt-2" id="extraDetails${index}">
+              ${car.extraDetails || ''}
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+        
+        if (imageObserver) {
+          const carousel = card.querySelector(`#carousel${index}`);
+          const images = carousel.querySelectorAll('img[data-src]');
+          images.forEach(img => imageObserver.observe(img));
+        } else {
+          const carousel = card.querySelector(`#carousel${index}`);
+          const images = carousel.querySelectorAll('img[data-src]');
+          images.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.add('loading');
+            img.onload = () => {
+              img.classList.remove('loading');
+            };
+          });
+        }
+      });
+      
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      if (visibleCars >= cars.length) {
+        loadMoreBtn.style.display = 'none';
+      } else {
+        loadMoreBtn.style.display = 'inline-block';
+      }
+    }
+
+    function toggleExtraDetails(index) {
+      const details = document.getElementById(`extraDetails${index}`);
+      const btn = document.getElementById(`btnDetails${index}`);
+      if (!details || !btn) return;
+
+      if (details.classList.contains('expanded')) {
+        details.classList.remove('expanded');
+        btn.textContent = 'عرض المزيد';
+        btn.classList.remove('btn-danger');
+        btn.classList.add('btn-warning');
+      } else {
+        details.classList.add('expanded');
+        btn.textContent = 'إخفاء التفاصيل';
+        btn.classList.remove('btn-warning');
+        btn.classList.add('btn-danger');
+      }
+    }
+
+    function openZoom(carIndex) {
+      const zoomModal = new bootstrap.Modal(document.getElementById('zoomModal'));
+      const zoomCarouselInner = document.getElementById('zoomCarouselInner');
+
+      zoomCarouselInner.innerHTML = cars[carIndex].images.map((img, i) => `
+        <div class="carousel-item${i === 0 ? ' active' : ''}">
+          <img src="${img}" class="d-block w-100" alt="${cars[carIndex].name} صورة ${i + 1}" />
+        </div>
+      `).join('');
+
+      zoomModal.show();
+    }
+
+    function closeZoom() {
+      const zoomModalEl = document.getElementById('zoomModal');
+      const modal = bootstrap.Modal.getInstance(zoomModalEl);
+      if (modal) modal.hide();
+    }
+
+    function loadMoreCars() {
+      visibleCars += carsPerLoad;
+      createCarCards();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initImageObserver();
+      
+      createCarCards();
+      
+      document.getElementById('loadMoreBtn').addEventListener('click', loadMoreCars);
+    });
+  </script>
 </body>
 </html>
