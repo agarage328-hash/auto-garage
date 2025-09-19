@@ -76,7 +76,7 @@
       height: 450px; 
       object-fit: cover; 
       border-radius: 10px;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.5s ease;
     }
     
     .car-card img.loading {
@@ -327,7 +327,7 @@
           </a>
         </div>
         <div class="col-md-2 col-6 text-center mb-2">
-          <a href="tel:+212600292494" class="text-light fs-5"><i class="fas fa-phone me-1"></i> اتصل بنا</a>
+          <a href="tel:212600292494" class="text-light fs-5"><i class="fas fa-phone me-1"></i> اتصل بنا</a>
         </div>
         <div class="col-md-2 col-6 text-center mb-2">
           <a href="https://wa.me/212600292494" target="_blank" class="text-light fs-5"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
@@ -351,26 +351,24 @@
     // بيانات السيارات
     const cars = [
       {
-        name: "peugeot 208",
+        name: "Kia picanto",
         specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
-        images: ["208_1.png", "208_2.png", "208_3.png","208_4.png "],
+        images: ["picanto1.png", "picanto2.png", "picanto3.png","picanto4.png ","picanto5.png",],
         specs: [
-          "Année: 2021 ",
-          "Boit vitasse : manualle",
-          "kilométrage: 133 000 km ",
-         "1er Maine "
+          "Année: 2016 ",
+          "Boit vitasse : Automatique",
+          "kilométrage: 165 000 km "
+         
         ],
         extraDetails: `
         <h2>Option</h2>
         <ul style="color:  #000000;" >
 
-          <li>Climatisation automatique</li>
-          <li>Puissance fiscale : 6 cv </li>
+         
+          <li>Puissance fiscale : 5 cv </li>
           <li>Système de navigation GPS</li>
-          <li>Caméra de recul</li>
           <li>Feux arrière LED rouges</li>
           <li>Capteurs de stationnement avant et arrière</li>
-          <li>Régulateur de vitesse</li>
           <li>Jamais accidentée</li>
         </ul>
         `
@@ -409,7 +407,7 @@
         images: ["jeep1.png", "jeep2.png", "jeep3.png", "jeep4.png","jeep5.png"],
         specs: [
           "Jeep Copasse",
-        "Année: 2021 ",
+        "Année: 2022 ",
           "Boit vitasse : manualle",
           "kilométrage: 76 000 km ",
           "1er Maine"
@@ -513,7 +511,7 @@
         specs: [
         "Année: 2022 ",
           "Boit vitasse : Automatique ",
-          "kilométrage: 67 000 km ",
+          "kilométrage: 71 000 km ",
           "1ère main"
         ],
 
@@ -667,10 +665,10 @@
         specialOffer: "خصم خاص 12%",
         images: ["partnir2.png", "partnir3.png", "partnir4.png", "partnir5.png", ],
         specs: [
-         "Année : 2009 ",  
-         "diwana : 2014",               
+         "Année : 2007 ",  
+         "diwana : 2015",               
          "1ère main   ",                 
-         "Kilométrage : 160 000 km",                
+         "Kilométrage : 177 000 km",                
          "Moteur : Diesel"  
         ],
         extraDetails: `
@@ -711,14 +709,14 @@
         <li>Puissance fiscale : 5 cv                   </li>
         <li>Vitres électriques                         </li>
    
-
+       </ul>
 
         `
       },
       {
         name: "PASSAT CC",
         specialOffer: "خصم 12% لفترة ",
-        images: ["passat1.png", "passat2.png", "passat_cc_2015_3.jpg","passat3.png","passat3.png"],
+        images: ["passat1.png", "passat2.png", "passat_cc2015 _3.jpg","passat4.png","passat3.png"],
         specs: [
         "Année : 2015 ",                 
          "Boit vitasse Automatique ",                 
@@ -727,25 +725,25 @@
         ],
         extraDetails:   `
         <h2>Option</h2>
+        
         <ul style="color:  #000000;" >
-
-    <li>Marque :            Volkswagen Passat CC ,</li>
-    <li>Année  :            2015                  </li>
-    <li>Kilométrage :       300 000 km            </li>
-    <li>Moteur :            Diesel                </li>
-    <li>Boîte de vitesses : Automatique           </li>
-    <li>Toit ouvrant panoramique                  </li>
-    <li>Climatisation automatique                 </li>
-    <li>Intérieur cuir                            </li>
-    <li>Système de navigation GPS                 </li>
-    <li>Caméra de recul                           </li>
-    <li>Régulateur et limiteur de vitesse         </li>
-    <li>Feux LED                                  </li>
-    <li>Peinture d'origine                        </li>
-    <li>Radars de stationnement avant et arrière  </li>
+        
+    <li> Marque :            Volkswagen Passat CC  </li>
+    <li> Année  :            2015                  </li>
+    <li> Kilométrage :       300 000 km            </li>
+    <li> Moteur :            Diesel                </li>
+    <li> Boîte de vitesses : Automatique           </li>
+    <li> Toit ouvrant panoramique                  </li>
+    <li> Climatisation automatique                 </li>
+    <li> Intérieur cuir                            </li>
+    <li> Système de navigation GPS                 </li>
+    <li> Caméra de recul                           </li>
+    <li> Régulateur et limiteur de vitesse         </li>
+    <li> Feux LED                                  </li>
+    <li> Peinture d'origine                        </li>
+    <li> Radars de stationnement avant et arrière  </li>
   </ul>
-
-        `
+    `
       },
       {
         name: "Mercedis A205e",
@@ -1035,4 +1033,5 @@
     });
   </script>
 </body>
+
 </html>
