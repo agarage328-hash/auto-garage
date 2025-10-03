@@ -585,7 +585,7 @@
       {
         name: "Jetta",
         specialOffer: "خصم خاص بمناسبة الموسم",
-        images: ["jeet2019_1.png", "jeet2019_2.png", "jeet2019_3.png","jeet2019_4.png","jeet2019_5.jpg","jeet2019_6.png"],
+        images: ["jeet2019_1.png", "jeet2019_2.png", "jeet2019_3.png","jeet2019_4.png","jeet2019_5.png","jeet2019_6.png"],
         specs: [
         "Année: 2019 ",
           "Boit vitasse :  Automatique ",
@@ -983,7 +983,7 @@
       
 
       cars.forEach((car, index) => {
-        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات اكثر حول هذه السيارة: ' + car.name);
+        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات اكثر حول هذه السيارة: ' + car.name.specs);
         
         const card = document.createElement('div');
         card.classList.add('col-12');
@@ -1097,5 +1097,6 @@
   </script>
 </body>
 </html>
+
 
 
