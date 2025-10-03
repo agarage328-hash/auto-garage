@@ -983,7 +983,7 @@
       
 
       cars.forEach((car, index) => {
-        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات اكثر حول هذه السيارة: ' + car.name.specs);
+        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات اكثر حول هذه السيارة: ' + car.specs);
         
         const card = document.createElement('div');
         card.classList.add('col-12');
@@ -1097,6 +1097,7 @@
   </script>
 </body>
 </html>
+
 
 
 
