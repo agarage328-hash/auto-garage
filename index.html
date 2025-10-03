@@ -272,7 +272,6 @@
       }
     }
 
-    /* تحسينات للأداء */
     .carousel-item:not(.active) {
       display: none;
     }
@@ -355,20 +354,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // بيانات السيارات
+
     const cars = [
       {
         name: "OPEL ASTRA",
         specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
-        images: ["opel1.png", "opel2.png", "opel3.png","opel4.png","opel5.png"],
+        images: ["opel1.png", "opel2.png", "opel3.png","opel4.png ","opel5.png"],
         specs: [
           "Année: 2018 ",
           "Boit vitasse : Manuelle",
           "kilométrage: 115 000 km "
+         
         ],
         extraDetails: `
         <h2>Option</h2>
         <ul style="color:  #000000;" >
+
+         
           <li>Puissance fiscale : 6 cv </li>
           <li>Jantes aluminium </li>
           <li>Carburant : Diesel     </li>
@@ -384,6 +386,7 @@
         </ul>
         `
       },
+
       {
         name: "HYUNDAI Accent",
         specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
@@ -397,6 +400,7 @@
         extraDetails: `
         <h2>Option</h2>
         <ul style="color:  #000000;" >
+
           <li>Climatisation automatique</li>
           <li>Puissance fiscale : 6 cv </li>
           <li>Système de navigation GPS</li>
@@ -407,9 +411,525 @@
         </ul>
         `
       },
-      // ... باقي السيارات كما هي
+     
+
+
+      {
+        name: "JEEP",
+        specialOffer: "عرض خاص: خصم 10% لفترة محدودة!",
+        images: ["jeep1.png", "jeep2.png", "jeep3.png", "jeep4.png","jeep5.png"],
+        specs: [
+          "Jeep Copasse",
+        "Année: 2022 ",
+          "Boit vitasse : manualle",
+          "kilométrage: 76 000 km ",
+          "1er Maine"
+          
+        ],
+        extraDetails: ` 
+
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 7 cv                   </li>
+    <li>  Nombre de rapports : 6                     </li>
+    <li>  Puissance réelle : 115 ch                  </li>
+    <li>  Caméra de recul                            </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Capteurs de stationnement avant et arrière </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    <li>  Jamais accidentée                          </li>
+        </ul>
+
+      `
+      },
+
+
+
+      {
+        name: "Nissan Qashqai ",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["qashqai2022_1.png", "qashqai2022_2.png", "qashqai2022_3.png","qashqai2022_4.png","qashqai2022_5.jpg","qashqai2022_6.png"],
+        specs: [
+        "Année: 2022 ",
+          "Boit vitasse :  manualle ",
+          "kilométrage: 61 000 km ",
+          "Touts options",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+  <li> Diesel                               </li>
+  <li> Climatisation automatique            </li>
+  <li> Puissance fiscale : 7 CV             </li>
+  <li> Boîte de vitesses : manualle         </li>
+  <li> Régulateur et limiteur de vitesse    </li>
+  <li> Feux arrière LED rouges              </li>
+  <li> Écran tactile multifonction          </li>
+  <li> Bluetooth                            </li>
+  <li> Caméra de recul                      </li>
+  <li> Jantes aluminium                     </li>
+
+  </ul>
+  `
+      },
+
+      
+      {
+        name: "HYUNDAI I30",
+        specialOffer: "سيارة مستعملة في حالة ممتازة ",
+        images: ["i30_1.png", "i30_2.png", "i30_3.png","i30_4.png","i30.jpg"],
+        specs: [
+       
+        "Année: 2019 ",
+          "Boit vitasse : manualle",
+          "kilométrage: 99 000 km ",
+          "1er Maine ",
+          "Carburant : Diesel "
+
+        ],
+        extraDetails: ` 
+
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 6 cv                   </li>
+    <li>  Nombre de rapports : 6                     </li>
+    <li>  Puissance réelle : 136 ch                  </li>
+    <li>  Coffre (litre) : 395 l                     </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  DVD/SD/USB                                 </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    
+    
+        </ul>
+        `
+      },
+      {
+        name: "HYUNDAI Creta",
+        specialOffer: "خصم خاص 12% لفترة محدودة",
+        images: ["creta1_2021.png", "creta2_2021.png", "creta3_2021.png","creta4_2021.png","creta5_2021.png","creta6_2021.png"],
+
+              specs: [
+         "Année: 2021 ",
+          "Boit vitasse : manualle ",
+          "kilométrage: 35 000 km ",
+          "1ère main"
+
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+
+    <li>  Climatisation automatique                  </li>
+    <li>  Puissance fiscale : 6 cv                   </li>
+    <li>  Boit vitasse manualle                   </li>
+    <li>  Puissance réelle : 115 ch                  </li>
+    <li>  Régulateur et limiteur de vitesse          </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Nombre de portes : 5                       </li>
+    <li>  Rétroviseurs extérieurs rabattables        </li>
+    <li>  Démarrage sans clé (bouton Start/Stop)     </li>
+    
+    
+        </ul>
+        `
+      },
+      {
+        name: " HYUNDAI Creta",
+        specialOffer: "سيارة في حالة ممتازة ",
+        images: ["creta2020_2.png", "creta2020_3.png", "creta2020_4.png","creta2020_5.png"],
+      
+        specs: [
+        "Année: 2022 ",
+          "Boit vitasse : Automatique ",
+          "kilométrage: 71 000 km ",
+          "1ère main"
+        ],
+
+        extraDetails: `
+        <h2>Option</h2>
+
+        <ul style="color:  #000000;" >
+
+    <li>  Climatisation automatique                  </li>   
+    <li>  Puissance fiscale : 6 cv                   </li>
+    <li>  Automatique                                </li>
+    <li>  Puissance réelle : 125 ch                  </li>
+    <li>  Régulateur et limiteur de vitesse          </li>
+    <li>  Feux arrière  LED rouges                   </li>
+    <li>  Écran tactile multifonction                </li>
+    <li>  Régulateur de vitesse                      </li>
+    <li>  Jantes aluminium                           </li>
+    <li>  Rétroviseurs rabattables                   </li>
+    
+        </ul>
+        `
+      },
+
+      {
+        name: "Jetta",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["jeet2019_1.png", "jeet2019_2.png", "jeet2019_3.png","jeet2019_4.png","jeet2019_5.jpg","jeet2019_6.png"],
+        specs: [
+        "Année: 2019 ",
+          "Boit vitasse :  Automatique ",
+          "kilométrage: 120 000 km ",
+          "Touts options",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+
+  <li> Climatisation automatique            </li>
+  <li> Puissance fiscale : 8 CV             </li>
+  <li> Boîte de vitesses : Automatique      </li>
+  <li> Régulateur et limiteur de vitesse    </li>
+  <li> Feux arrière LED rouges              </li>
+  <li> Toit ouvrant                         </li>
+  <li> Écran tactile multifonction          </li>
+  <li> Démarrage Start/Stop                 </li>
+  <li> Puissance dynamique : 150 ch         </li>
+  <li> Volume du coffre : 445 l             </li>
+  <li> Caméra de recul                      </li>
+  <li> Jantes aluminium                     </li>
+
+  </ul>
+  `
+      },
+      
+      {
+        name: "RENAULT EXPRISS",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["Renault_Expriss 1.png", "Renault_Expriss 2.png", "Renault_Expriss 3.png","Renault_Expriss 3.png","Renault Expriss 2023 5.jpg"],
+        specs: [
+        "Année: 2023 ",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 33 000 km ",
+          "dauble couliss",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Manualle                     </li>
+  <li>  Régulateur et limiteur de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Régulateur de vitesse                      </li>
+  <li>  Boîte à vitesse : 5 rapports               </li>
+  <li>  Puissance dynamique95 ch                   </li>
+  <li>  Volume de coffre800 litre                  </li>
+  <li>  Caméra de recul                            </li>
+  <li>  Jantes aluminium                           </li> 
+
+  </ul>
+  `
+      },
+      {
+        name: "BMW 116d",
+        specialOffer: "خصومات الصيف 18%",
+        images: ["bmw1.png","bmw2.png","bmw3.png","bmw4.png "],
+        specs: [
+          "BMW Série 1",
+        "Année: 2019 ",
+          "Boit vitasse :  Automatique",
+          "kilométrage: 38 000 km ",
+          "Toutes options ",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        
+        <ul style="color:  #000000;" >
+
+  
+
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Automatique                  </li>
+  <li>  Régulateur et limiteر de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Régulateur de vitesse                      </li>
+  <li>  Jantes en aluminium                        </li> 
+  <li>  Caméra de recul                            </li>
+
+  </ul>
+  `
+      },
+      {
+        name: "DACIA  Sandero",
+        specialOffer: "عرض خاص 10%",
+        images: ["sandiro2020.png","sandiro2021.png","sandiro2024.png","sandiro2023.png"],
+        specs: [
+        "DACIA  Sandero steepway",
+        "Année: 2020",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 59 000 km ",
+          "1ère main",
+          "Carburant : Diesel",
+          "Toutes options "
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+        
+        <ul style="color:  #000000;" >
+
+
+  <li>  Climatisation automatique                  </li>   
+  <li>  Puissance fiscale : 6 cv                   </li>
+  <li>  Boit vitasse: Manualle                     </li>
+  <li>  Régulateur et limiteur de vitesse          </li>
+  <li>  Feux arrière  LED rouges                   </li>
+  <li>  Écran tactile multifonction                </li>
+  <li>  Jantes en aluminium                        </li>
+  <li>  Nombre de portes : 5                       </li>
+  <li>  Peinture d'origine                         </li>
+  </ul>
+  `
+      },
+      {
+        name: "TOYOTA YARIS",
+        specialOffer: "خصم 15% لفترة محدودة",
+        images: ["yariss1.png", "yaris2.png", "yaris3.png","yaris4.png","yaris5.jpg"],
+        specs: [
+        "Année: 2019",
+          "Boit vitasse :  Manualle ",
+          "kilométrage: 40 000 km ",
+          "Toutes options ",
+          "1ère main",
+          "Diesele"
+        ],
+        extraDetails:   `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+  <li>  Climatisation automatique                   </li>   
+  <li>  Puissance fiscale : 6 cv                    </li>
+  <li>  Boit vitasse: Manualle                      </li>
+  <li>  Régulateur et limiteur de vitesse           </li>
+  <li>  Feux arrière  LED rouges                    </li>
+  <li>  Écran tactile multifonction                 </li>
+  <li>  Régulateur de vitesse                       </li>
+  <li>  Rétroviseurs rabattables                    </li>
+  <li>  Peinture d'origine                          </li>
+  </ul>
+  `
+      },
+      {
+        name: "PEUGEOT Partner",
+        specialOffer: "خصم خاص 12%",
+        images: ["partnir2.png", "partnir3.png", "partnir4.png", "partnir5.png", ],
+        specs: [
+         "Année : 2007 ",  
+         "diwana : 2015",               
+         "1ère main   ",                 
+         "Kilométrage : 177 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails: `
+          <h2>Option</h2>
+        
+          <ul style="color:  #000000;" >
+
+    <li> Année : 2009                             </li>
+    <li> 1ère main                                </li>
+    <li> Kilométrage : 160 000 km                 </li>
+    <li> Moteur : Diesel                          </li>
+    <li> Boîte de vitesses : Manuelle             </li>
+    <li> Double portes coulissantes               </li>
+    <li> Climatisation                            </li>
+    <li> Peinture d'origine                       </li>
+  </ul>
+    `
+
+      },
+      {
+        name: "SUZUKI Celerio",
+        specialOffer: "عرض خاص 10%",
+        images: ["suzuki1.png", "suzuki2.png", "suzuki4.png", "suzuki5.png" , "suzuki5.jpg"],
+        specs: [
+        "Année : 2018 ",                 
+         "1ère main   ",                 
+         "Kilométrage : 89 000 km",                
+         "Moteur : Essance"  
+        ],
+        extraDetails:  `
+        <h2>Option</h2>
+         
+        <ul style="color:  #000000;" >
+
+        <li>Verrouillage centralisé à distance         </li>
+        <li>Première main                              </li> 
+        <li>Boite de vitesses Manuelle                 </li>
+        <li>Puissance fiscale : 5 cv                   </li>
+        <li>Vitres électriques                         </li>
+   
+       </ul>
+
+        `
+      },
+      {
+        name: "PASSAT CC",
+        specialOffer: "خصم 12% لفترة ",
+        images: ["passat1.png", "passat2.png", "passat_cc2015 _3.jpg","passat4.png","passat3.png"],
+        specs: [
+        "Année : 2015 ",                 
+         "Boit vitasse Automatique ",                 
+         "Kilométrage : 300 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails:   `
+        <h2>Option</h2>
+        
+        <ul style="color:  #000000;" >
+        
+    <li> Marque :            Volkswagen Passat CC  </li>
+    <li> Année  :            2015                  </li>
+    <li> Kilométrage :       300 000 km            </li>
+    <li> Moteur :            Diesel                </li>
+    <li> Boîte de vitesses : Automatique           </li>
+    <li> Toit ouvrant panoramique                  </li>
+    <li> Climatisation automatique                 </li>
+    <li> Intérieur cuir                            </li>
+    <li> Système de navigation GPS                 </li>
+    <li> Caméra de recul                           </li>
+    <li> Régulateur et limiteur de vitesse         </li>
+    <li> Feux LED                                  </li>
+    <li> Peinture d'origine                        </li>
+    <li> Radars de stationnement avant et arrière  </li>
+  </ul>
+    `
+      },
+      {
+        name: "Mercedis A205e",
+        specialOffer: "Mercedes A 205e Hybride en parfait état, très faible kilométrage, équipée de toutes les options haut de gamme pour un confort et une sécurité maximale. Une occasion unique à ne pas manquer",
+        images: ["m1.png", "m2.png", "m3.png","m4.jpg"],
+        specs: [
+        "Année : 2020 ",                 
+         "Boit vitasse Automatique ",                 
+         "Kilométrage : 84 000 km",                
+         "Moteur : hybrid et Essance "  
+        
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Année premiere mise en circulation :  2020  </li>
+      <li>Premier usage au Maroc en :           2023  </li>
+      <li> 1ère main                                  </li>
+      <li>Kilométrage :  84 000 km                    </li>
+      <li>Motorisation : Hybride rechargeable         </li>
+      <li>Boîte :        Automatique                  </li>
+      <li>Couleur :      Noir métallisé               </li>
+      <li>Toit ouvrant panoramique                    </li>
+      <li>Intérieur cuir haut de gamme                </li>
+      <li>Écran tactile multifonction                 </li>
+      <li>Système de navigation GPS                   </li>
+      <li>Caméra 360° et radars avant/arrière         </li>
+      <li>Climatisation automatique bi-zone           </li>
+      <li>Jantes en alliage aluminium                 </li>
+      <li>Système audio premium                       </li>
+      <li>Toutes options                              </li>
+      <li>Jamais accidentée                           </li>
+    </ul>
+    `
+      },
+      {
+        name: "DACIA SANDIRO STEEPWAY",
+        specialOffer: " Nouveu Dacia sandero steepway", 
+        images: ["dacia_sandiro1.png", "dacia sandiro2.png", "dacia_sandiro3.png", "dacia sandiro4.png", "dacia_sandiro5.png", "dacia_sandiro6.png"],
+        specs: [
+         
+        "Année : 2025 ",                 
+         "Boit vitasse Manuille ",                 
+         "Kilométrage : 7 000 km",                
+         "Moteur : Diesel" 
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Boîte vitasse: Manuelle           </li>
+      <li>Climatisation                     </li>
+      <li>Vitres électriques                </li>
+      <li>Rádio / CD                        </li>
+      <li>Entrée AUX                        </li>
+      <li>Fermeture centralisée             </li>
+      <li>Rétroviseurs électriques          </li>
+      <li>Consommation réduite              </li>
+      <li>Confort et maniabilité            </li>
+      <li>Ecran tactile                     </li>
+      <li>Navigation GPS                    </li>
+      <li>Nombre de places : 5              </li>
+      <li>Démarrage en Start & Stop         </li>
+      <li>Jantes aluminium                  </li>
+    
+
+    </ul>
+    `
+      },
+      {
+        name: "HANDAI CRETA",
+        specialOffer: "hyundai creta manuel 6 cheveux diesel mode",
+        images: ["cretag1.png", "cretag2.png", "critag3.png","crita4.jpg","critag4.png"],
+        specs: [
+
+        "Année : 2021 ",                 
+         "Boit vitasse Manuille ",                 
+         "Kilométrage : 64 000 km",                
+         "Moteur : Diesel"  
+        ],
+        extraDetails:`
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+      <li>Motorisation : 1.4 Diesil         </li>
+      <li>Boîte :           Manuelle        </li>
+      <li>Climatisation                     </li>
+      <li>Vitres électriques                </li>
+      <li>Rádio / CD                        </li>
+      <li>Entrée AUX                        </li>
+      <li>Limiteur de vitesse               </li>
+      <li>Rétroviseurs électriques          </li>
+      <li>Consommation réduite              </li>
+      <li>ESP/ABS/Airbags                   </li>
+      <LI>Puissance fiscale 6 CV            </li>
+      <li>Jantes aluminium                  </li>
+    </ul>
+    `
+      
+      },
+     
     ];
 
+    
     const waNumber = '+212600292494';
     let imageObserver = null;
 
@@ -461,7 +981,7 @@
       const container = document.getElementById('carsContainer');
       container.innerHTML = '';
       
-      // عرض كل السيارات مباشرة بدون زر "عرض المزيد"
+
       cars.forEach((car, index) => {
         const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات اكثر حول هذه السيارة: ' + car.name);
         
@@ -516,7 +1036,7 @@
 
         container.appendChild(card);
         
-        // تحميل الصور
+        
         const carousel = card.querySelector(`#carousel${index}`);
         const images = carousel.querySelectorAll('img[data-src]');
         images.forEach(img => {
@@ -577,3 +1097,4 @@
   </script>
 </body>
 </html>
+
