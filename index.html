@@ -297,10 +297,6 @@
   <div class="container my-5">
     <h1 class="text-center mb-5 text-warning" style="text-shadow: 5px 4px 2px #000">معرض سيارات للبيع</h1>
     <div id="carsContainer" class="row"></div>
-    
-    <div class="text-center mt-5">
-      <button id="loadMoreBtn" class="btn btn-outline-warning btn-lg">عرض المزيد من السيارات</button>
-    </div>
   </div>
 
   <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
@@ -451,6 +447,41 @@
 
       `
       },
+
+
+
+      {
+        name: "Nissan Qashqai ",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["qashqai2022_1.png", "qashqai2022_2.png", "qashqai2022_3.png","qashqai2022_4.png","qashqai2022_5.jpg","qashqai2022_6.png"],
+        specs: [
+        "Année: 2022 ",
+          "Boit vitasse :  manualle ",
+          "kilométrage: 61 000 km ",
+          "Touts options",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+  <li> Diesel                               </li>
+  <li> Climatisation automatique            </li>
+  <li> Puissance fiscale : 7 CV             </li>
+  <li> Boîte de vitesses : manualle         </li>
+  <li> Régulateur et limiteur de vitesse    </li>
+  <li> Feux arrière LED rouges              </li>
+  <li> Écran tactile multifonction          </li>
+  <li> Bluetooth                            </li>
+  <li> Caméra de recul                      </li>
+  <li> Jantes aluminium                     </li>
+
+  </ul>
+  `
+      },
+
+      
       {
         name: "HYUNDAI I30",
         specialOffer: "سيارة مستعملة في حالة ممتازة ",
@@ -550,6 +581,40 @@
     
         </ul>
         `
+      },
+
+      {
+        name: "Jetta",
+        specialOffer: "خصم خاص بمناسبة الموسم",
+        images: ["jeet2019_1.png", "jeet2019_2.png", "jeet2019_3.png","jeet2019_4.png","jeet2019_5.jpg","jeet2019_6.png"],
+        specs: [
+        "Année: 2019 ",
+          "Boit vitasse :  Automatique ",
+          "kilométrage: 120 000 km ",
+          "Touts options",
+          "1ère main"
+        ],
+        extraDetails: `
+        <h2>Option</h2>
+        <ul style="color:  #000000;" >
+
+
+
+  <li> Climatisation automatique            </li>
+  <li> Puissance fiscale : 8 CV             </li>
+  <li> Boîte de vitesses : Automatique      </li>
+  <li> Régulateur et limiteur de vitesse    </li>
+  <li> Feux arrière LED rouges              </li>
+  <li> Toit ouvrant                         </li>
+  <li> Écran tactile multifonction          </li>
+  <li> Démarrage Start/Stop                 </li>
+  <li> Puissance dynamique : 150 ch         </li>
+  <li> Volume du coffre : 445 l             </li>
+  <li> Caméra de recul                      </li>
+  <li> Jantes aluminium                     </li>
+
+  </ul>
+  `
       },
       
       {
@@ -866,8 +931,6 @@
     ];
 
     const waNumber = '+212600292494';
-    let visibleCars = 10; 
-    const carsPerLoad = 5; 
     let imageObserver = null;
 
     function initImageObserver() {
@@ -921,7 +984,7 @@
       const carsToShow = cars.slice(0, visibleCars);
       
       carsToShow.forEach((car, index) => {
-        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات  اكثر حول هذه السيارة: ' + car.name);
+        const waText = encodeURIComponent('مرحبا، هل يمكنني الحصول على معلومات  اكثر حول هذه السيارة: ' + car.name.specs);
         
         const card = document.createElement('div');
         card.classList.add('col-12');
@@ -1052,6 +1115,7 @@
 </body>
 
 </html>
+
 
 
 
